@@ -1,0 +1,32 @@
+========================================================================
+ATIVIDADE 1 - CONSULTAS MONGOBD (ETAPAS 3 E 4)
+========================================================================
+
+--- ETAPA 3: CONSULTAS BÁSICAS ---
+
+1. Listar todos os restaurantes:
+db.restaurants.find()
+
+2. Encontrar todos os restaurantes do bairro (borough) "Manhattan":
+db.restaurants.find({ "borough": "Manhattan" })
+
+3. Encontrar todos os restaurantes com CEP (zipcode) "10022":
+db.restaurants.find({ "address.zipcode": "10022" })
+
+4. Encontrar todos os restaurantes que possuam alguma nota (grade) "B":
+db.restaurants.find({ "grades.grade": "B" })
+
+
+--- ETAPA 4: CONSULTAS COM OPERADORES ---
+
+1. Listar todos os restaurantes com pontuação (score) maior que 30:
+db.restaurants.find({ "grades.score": { $gt: 30 } })
+
+2. Listar todos os restaurantes com pontuação (score) menor que 10:
+db.restaurants.find({ "grades.score": { $lt: 10 } })
+
+3. Listar todos os restaurantes com culinária (cuisine) italiana ("Italian") E com CEP "10075":
+db.restaurants.find({ "cuisine": "Italian", "address.zipcode": "10075" })
+
+4. Listar todos os restaurantes com culinária (cuisine) italiana ("Italian") OU com CEP "10075":
+db.restaurants.find({ $or: [ { "cuisine": "Italian" }, { "address.zipcode": "10075" } ] })
